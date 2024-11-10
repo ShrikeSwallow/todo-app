@@ -1,4 +1,4 @@
-import Project from "./project.js";
+import { Project, ToDo } from "./classes.js";
 const addNewProject = (project) => {
   return new Project(project);
 };
