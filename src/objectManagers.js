@@ -1,5 +1,7 @@
 import { Project, ToDo } from "./classes.js";
-const addNewProject = (project) => {
+class ProjectManager {}
+
+/*const addNewProject = (project) => {
   return new Project(project);
 };
 const deleteProject = (project) => {
@@ -11,3 +13,4 @@ const changeDueDate = (project, date) => {
 const completeProject = (project) => {
   project.isComplete = true;
 };
+*/
