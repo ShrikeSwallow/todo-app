@@ -1,7 +1,9 @@
 import { Project, ToDo } from "./classes.js";
 export class ProjectManager {
+  //Top level methods
   constructor() {
     this.projects = [new Project("Default", "")];
+    this.default = this.projects[0];
     this.completedProjects = [];
   }
   addProject(project) {
@@ -28,18 +30,16 @@ export class ProjectManager {
       console.log(project);
     });
   }
+
+  //Project level methods
+  addToDo(todo, project = this.default) {
+    project.todos.push(todo);
+  }
+  moveToDo(todo, projectSrc, projectTrg) {
+    projectTrg.todos.push(
+      projectSrc.todos.splice(projectSrc.todos.indexOf(todo), 1)
+    );
+  }
 }
 
-/*const addNewProject = (project) => {
-  return new Project(project);
-};
-const deleteProject = (project) => {
-  project.delete();
-};
-const changeDueDate = (project, date) => {
-  project.dueDate = date;
-};
-const completeProject = (project) => {
-  project.isComplete = true;
-};
-*/
+export class TaskManager {}

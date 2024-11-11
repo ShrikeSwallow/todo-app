@@ -23,9 +23,6 @@ export class Project extends Task {
     super(name, dueDate);
     this.todos = [];
   }
-  addToDo(todo) {
-    this.todos.push(todo);
-  }
 }
 
 export class ToDo extends Task {
