@@ -13,9 +13,6 @@ class Task {
   complete() {
     this.isComplete = true;
   }
-  delete() {
-    delete this;
-  }
 }
 
 export class Project extends Task {

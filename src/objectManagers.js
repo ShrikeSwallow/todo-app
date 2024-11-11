@@ -23,11 +23,10 @@ export class ProjectManager {
   }
   deleteProject(project) {
     this.projects.splice(this.projects.indexOf(project), 1);
-    project.delete();
   }
   showAllProjects() {
     this.projects.forEach((project) => {
-      console.log(project);
+      console.log(project.todos);
     });
   }
 
@@ -36,9 +35,11 @@ export class ProjectManager {
     project.todos.push(todo);
   }
   moveToDo(todo, projectSrc, projectTrg) {
-    projectTrg.todos.push(
-      projectSrc.todos.splice(projectSrc.todos.indexOf(todo), 1)
-    );
+    projectSrc.todos.splice(projectSrc.todos.indexOf(todo), 1);
+    projectTrg.todos.push(todo);
+  }
+  removeToDo(todo, project) {
+    project.todos.splice(project.todos.indexOf(todo), 1);
   }
 }
 
