@@ -41,6 +41,27 @@ export class ProjectManager {
   removeToDo(todo, project) {
     project.todos.splice(project.todos.indexOf(todo), 1);
   }
+  showAllToDos(project) {}
+
+  //ToDo level methods
+  renameToDo(todo, newName) {
+    todo.rename = newName;
+  }
+  changeToDoDueDate(todo, newDate) {
+    todo.changeDate = newDate;
+  }
+  changeToDoDescription(todo, newDescription) {
+    todo.changeDescription = newDescription;
+  }
+  changeToDoPriority(todo, newPriority) {
+    todo.changePriority = newPriority;
+  }
+  changeToDoNotes(todo, newNotes) {
+    todo.changeNotes = newNotes;
+  }
+  completeToDo(todo) {
+    todo.complete();
+  }
 }
 
 export class TaskManager {}
