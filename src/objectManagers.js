@@ -63,5 +63,3 @@ export class ProjectManager {
     todo.complete();
   }
 }
-
-export class TaskManager {}
