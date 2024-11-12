@@ -2,6 +2,10 @@ import { Project, ToDo } from "./classes.js";
 export class ProjectManager {
   //Top level methods
   constructor() {
+    if (!ProjectManager.instance) {
+      ProjectManager.instance = this;
+    }
+    return Singleton.instance;
     this.projects = [new Project("Default", "")];
     this.default = this.projects[0];
     this.completedProjects = [];
