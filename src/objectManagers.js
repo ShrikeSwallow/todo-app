@@ -6,7 +6,7 @@ export class ProjectManager {
       return ProjectManager.instance;
     }
     ProjectManager.instance = this;
-    this.projects = [new Project("Default", "")];
+    this.projects = [new Project("Default", "2000-12-12")];
     this.default = this.projects[0];
     this.completedProjects = [];
   }
@@ -27,6 +27,12 @@ export class ProjectManager {
   }
   deleteProject(project) {
     this.projects.splice(this.projects.indexOf(project), 1);
+  }
+  getProjects() {
+    return this.projects;
+  }
+  getCompletedProjects() {
+    return this.completedProjects;
   }
   showAllProjects() {
     this.projects.forEach((project) => {

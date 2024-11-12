@@ -1,10 +1,9 @@
 @import "../node_modules/modern-normalize/modern-normalize.css";
 
-main {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 250px 1fr;
+body {
+  line-height: 1.5;
 }
+
 h1,
 h2,
 h3,
@@ -15,16 +14,47 @@ h6 {
 }
 h1 {
   font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
 }
 h2 {
-  font-size: 1.25rem;
-  text-transform: uppercase;
+  font-size: 1.5rem;
   font-weight: 500;
+  margin-bottom: 0;
+}
+main {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr;
 }
 .sidebar {
   background-color: #701a75;
-  padding: 0 10%;
+  padding: 0 5%;
 }
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: white;
+}
+.sidebar li {
+  display: grid;
+  grid-template-columns: 1fr 100px 15px;
+}
+.sidebar .due-date,
+.sidebar .expand {
+  justify-self: end;
+}
+
+.sidebar .expand {
+  font-weight: 700;
+}
+
+.sidebar .expanded {
+  display: none;
+}
+
 .content {
   background-color: #86198f;
   box-shadow: inset 5px 0px 5px 0px #4a044e;
