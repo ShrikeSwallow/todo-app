@@ -12,10 +12,10 @@ export class DOMManager {
     const projects = document.querySelector(".projects");
     const completedProjects = document.querySelector(".completed-projects");
     this.drawSidebarProjects(this.PM.getProjects(), projects);
-
+    this.drawAddProjectButton(projects);
     this.drawSidebarProjects(this.PM.getCompletedProjects(), completedProjects);
   }
-  drawAddTodoButton() {}
+  addTodo() {}
   drawSidebarTodos(dataSource, targetElement) {
     const nestedList = targetElement.querySelector("ul");
     nestedList.innerHTML = `<li>
@@ -25,6 +25,7 @@ export class DOMManager {
             </li>`;
     dataSource.forEach((item) => {
       const listItem = document.createElement("li");
+      listItem.classList.add("todo");
 
       const spanStatus = document.createElement("span");
       spanStatus.classList.add("todo-status");
@@ -44,6 +45,19 @@ export class DOMManager {
 
       nestedList.appendChild(listItem);
     });
+    const addTodoButton = document.createElement("button");
+    addTodoButton.classList.add("add-todo-btn");
+    addTodoButton.setAttribute("type", "button");
+    addTodoButton.textContent = "Add TODO";
+    nestedList.insertAdjacentElement("afterend", addTodoButton);
+  }
+  addProject() {}
+  drawAddProjectButton(target) {
+    const addProjectButton = document.createElement("button");
+    addProjectButton.classList.add("add-project-btn");
+    addProjectButton.setAttribute("type", "button");
+    addProjectButton.textContent = "Add Project";
+    target.appendChild(addProjectButton);
   }
   drawSidebarProjects(dataSource, targetElement) {
     const list = targetElement.querySelector("ul");
@@ -54,6 +68,7 @@ export class DOMManager {
             </li>`;
     dataSource.forEach((item) => {
       const listItem = document.createElement("li");
+      listItem.classList.add("project");
 
       const spanName = document.createElement("span");
       spanName.classList.add("project-name");
