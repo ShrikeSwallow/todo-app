@@ -38,7 +38,7 @@ main {
   list-style: none;
   color: white;
 }
-.sidebar li {
+.sidebar .projects-list > li {
   display: grid;
   grid-template-columns: 1fr 100px 15px;
 }
@@ -53,6 +53,22 @@ main {
 
 .sidebar .expanded {
   display: none;
+}
+.sidebar .todos-list {
+  grid-column-start: span 3;
+  font-size: 0.8em;
+}
+.sidebar .todos-list > li {
+  display: grid;
+  grid-template-columns: 15px 1fr 85px 15px;
+}
+
+.sidebar .todo-status {
+  justify-self: center;
+  align-self: center;
+}
+.sidebar .todo-due-date {
+  justify-self: end;
 }
 
 .content {

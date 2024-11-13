@@ -51,6 +51,9 @@ export class ProjectManager {
   removeToDo(todo, project) {
     project.todos.splice(project.todos.indexOf(todo), 1);
   }
+  getToDos(project) {
+    return project.todos;
+  }
   showAllToDos(project) {}
 
   //ToDo level methods
