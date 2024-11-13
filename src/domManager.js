@@ -1,3 +1,4 @@
+import { ToDo } from "./classes";
 import { ProjectManager } from "./objectManagers";
 
 export class DOMManager {
@@ -9,17 +10,29 @@ export class DOMManager {
     this.PM = new ProjectManager();
   }
   initialize() {
+    //test section with fixed data
+    /*const testTodo = new ToDo(
+      "test1",
+      "2024-1-1",
+      "test description",
+      "test priority",
+      "test notes"
+    );
+    this.PM.addToDo(testTodo);
+    console.log(testTodo);
+    this.PM.completeToDo(testTodo);
+    console.log(this.PM.projects[0]);
+    */
     const projects = document.querySelector(".projects");
     const completedProjects = document.querySelector(".completed-projects");
     this.drawSidebarProjects(this.PM.getProjects(), projects);
     this.drawAddProjectButton(projects);
     this.drawSidebarProjects(this.PM.getCompletedProjects(), completedProjects);
   }
-  addTodo() {}
   drawSidebarTodos(dataSource, targetElement) {
     const nestedList = targetElement.querySelector("ul");
     nestedList.innerHTML = `<li>
-              <span class="todo-status">x</span>
+              <span class="todo-status"></span>
               <span class="todo-name">TODO:</span>
               <span class="todo-due-date"></span>
             </li>`;
@@ -29,7 +42,7 @@ export class DOMManager {
 
       const spanStatus = document.createElement("span");
       spanStatus.classList.add("todo-status");
-      spanStatus.textContent = `X`;
+      if (item.isComplete) spanStatus.textContent = `✓`;
 
       const spanName = document.createElement("span");
       spanName.classList.add("todo-name");
@@ -51,7 +64,6 @@ export class DOMManager {
     addTodoButton.textContent = "Add TODO";
     nestedList.insertAdjacentElement("afterend", addTodoButton);
   }
-  addProject() {}
   drawAddProjectButton(target) {
     const addProjectButton = document.createElement("button");
     addProjectButton.classList.add("add-project-btn");
@@ -103,4 +115,6 @@ export class DOMManager {
       list.appendChild(listItem);
     });
   }
+  addTodo() {}
+  addProject() {}
 }
