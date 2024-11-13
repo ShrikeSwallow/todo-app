@@ -6,14 +6,16 @@ export class DOMManager {
       return DOMManager.instance;
     }
     DOMManager.instance = this;
+    this.PM = new ProjectManager();
   }
   initialize() {
-    const PM = new ProjectManager();
     const projects = document.querySelector(".projects");
     const completedProjects = document.querySelector(".completed-projects");
-    this.drawSidebarProjects(PM.getProjects(), projects);
-    this.drawSidebarProjects(PM.getCompletedProjects(), completedProjects);
+    this.drawSidebarProjects(this.PM.getProjects(), projects);
+
+    this.drawSidebarProjects(this.PM.getCompletedProjects(), completedProjects);
   }
+  drawAddTodoButton() {}
   drawSidebarTodos(dataSource, targetElement) {
     const nestedList = targetElement.querySelector("ul");
     nestedList.innerHTML = `<li>
@@ -80,7 +82,8 @@ export class DOMManager {
       todos.classList.add("todos-list");
       listItem.appendChild(todos);
 
-      this.drawSidebarTodos(item.todos, listItem);
+      //the below may not work, in such a case, use this.drawSidebarTodos(item.todos, listItem)
+      this.drawSidebarTodos(this.PM.getToDos(item), listItem);
 
       list.appendChild(listItem);
     });
