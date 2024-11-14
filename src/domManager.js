@@ -10,59 +10,58 @@ export class DOMManager {
     this.PM = new ProjectManager();
   }
   initialize() {
-    //test section with fixed data
-    /*const testTodo = new ToDo(
+    /* test section 
+    with fixed data*/
+    const testTodo = new ToDo(
       "test1",
       "2024-1-1",
       "test description",
       "test priority",
       "test notes"
     );
+    const testTodo2 = new ToDo(
+      "test2",
+      "2024-1-1",
+      "test description",
+      "test priority",
+      "test notes"
+    );
+    const testTodo3 = new ToDo(
+      "test3",
+      "2024-1-1",
+      "test description",
+      "test priority",
+      "test notes"
+    );
+    const testTodo4 = new ToDo(
+      "test4",
+      "2024-1-1",
+      "test description",
+      "test priority",
+      "test notes"
+    );
+    const testTodo5 = new ToDo(
+      "test5",
+      "2024-1-1",
+      "test description",
+      "test priority",
+      "test notes"
+    );
     this.PM.addToDo(testTodo);
+    this.PM.addToDo(testTodo2);
+    this.PM.addToDo(testTodo3);
+    this.PM.addToDo(testTodo4);
+    this.PM.addToDo(testTodo5);
     console.log(testTodo);
     this.PM.completeToDo(testTodo);
     console.log(this.PM.projects[0]);
-    */
+    //end of test data section
+
     const projects = document.querySelector(".projects");
     const completedProjects = document.querySelector(".completed-projects");
     this.drawSidebarProjects(this.PM.getProjects(), projects);
     this.drawAddProjectButton(projects);
-    this.drawSidebarProjects(this.PM.getCompletedProjects(), completedProjects);
-  }
-  drawSidebarTodos(dataSource, targetElement) {
-    const nestedList = targetElement.querySelector("ul");
-    nestedList.innerHTML = `<li>
-              <span class="todo-status"></span>
-              <span class="todo-name">TODO:</span>
-              <span class="todo-due-date"></span>
-            </li>`;
-    dataSource.forEach((item) => {
-      const listItem = document.createElement("li");
-      listItem.classList.add("todo");
-
-      const spanStatus = document.createElement("span");
-      spanStatus.classList.add("todo-status");
-      if (item.isComplete) spanStatus.textContent = `✓`;
-
-      const spanName = document.createElement("span");
-      spanName.classList.add("todo-name");
-      spanName.textContent = `TODO: ${item.name}`;
-
-      const spanDate = document.createElement("span");
-      spanDate.classList.add("todo-due-date");
-      spanDate.textContent = `${item.dueDate}`;
-
-      listItem.appendChild(spanStatus);
-      listItem.appendChild(spanName);
-      listItem.appendChild(spanDate);
-
-      nestedList.appendChild(listItem);
-    });
-    const addTodoButton = document.createElement("button");
-    addTodoButton.classList.add("add-todo-btn");
-    addTodoButton.setAttribute("type", "button");
-    addTodoButton.textContent = "Add TODO";
-    nestedList.insertAdjacentElement("afterend", addTodoButton);
+    //this.drawSidebarProjects(this.PM.getCompletedProjects(), completedProjects);
   }
   drawAddProjectButton(target) {
     const addProjectButton = document.createElement("button");
@@ -89,15 +88,28 @@ export class DOMManager {
       spanDate.classList.add("due-date");
       spanDate.textContent = `${item.dueDate}`;
 
-      const spanExpand = document.createElement("span");
-      spanExpand.classList.add("expand");
-
       listItem.appendChild(spanName);
       listItem.appendChild(spanDate);
+
+      this.drawContentTodos(item);
 
       list.appendChild(listItem);
     });
   }
+  drawContentTodos(project) {
+    const content = document.querySelector(".content");
+    content.innerHTML = `<h2 class="content-header">ToDo in project <em>${project.name}</em></h2><div class="container"></div>`;
+    const container = document.querySelector(".container");
+    const todos = this.PM.getToDos(project);
+    console.log("This should generate in the main body:", todos);
+    todos.forEach((todo) => {
+      const card = document.createElement("div");
+      card.classList.add("todo-card");
+
+      container.appendChild(card);
+    });
+  }
+
   addTodo() {}
   addProject() {}
 }

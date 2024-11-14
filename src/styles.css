@@ -58,5 +58,18 @@ main {
 
 .content {
   background-color: #86198f;
+  padding: 0 5%;
   box-shadow: inset 5px 0px 5px 0px #4a044e;
+}
+
+.container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  grid-auto-rows: minmax(300px, min-content);
+  gap: 50px;
+}
+
+.todo-card {
+  background-color: white;
 }
