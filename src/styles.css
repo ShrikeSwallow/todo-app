@@ -40,52 +40,16 @@ main {
 }
 .sidebar .projects-list > li {
   display: grid;
-  grid-template-columns: 1fr 100px 15px;
+  grid-template-columns: 1fr 100px;
 }
-.sidebar .due-date,
-.sidebar .expand {
+.sidebar .due-date {
   justify-self: end;
 }
 
-.sidebar .expand {
-  font-weight: 700;
-}
-
-.sidebar .expanded {
-  display: none;
-}
-.sidebar .todos-list {
-  grid-column-start: span 3;
-  font-size: 0.8em;
-}
-.sidebar .todos-list > li {
-  display: grid;
-  grid-template-columns: 15px 1fr 85px 15px;
-}
-
-.sidebar .todo-status {
-  justify-self: center;
-  align-self: center;
-}
-.sidebar .todo-due-date {
-  justify-self: end;
-}
-
-.sidebar .add-todo-btn,
 .sidebar .add-project-btn {
   justify-self: start;
   border: none;
   border-radius: 4px;
-}
-
-.sidebar .add-todo-btn {
-  font-size: 0.8rem;
-  background-color: #dcfce7;
-  padding: 3px 4px;
-  margin-top: 0.25rem;
-}
-
-.sidebar .add-project-btn {
   background-color: #4ade80;
   padding: 6px 10px;
   margin-top: 1rem;

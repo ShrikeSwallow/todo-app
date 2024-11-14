@@ -76,7 +76,6 @@ export class DOMManager {
     list.innerHTML = `<li>
               <span class="project-name">Project Name</span>
               <span class="due-date">Due Date</span>
-              <span class="expand"></span>
             </li>`;
     dataSource.forEach((item) => {
       const listItem = document.createElement("li");
@@ -92,25 +91,9 @@ export class DOMManager {
 
       const spanExpand = document.createElement("span");
       spanExpand.classList.add("expand");
-      const spanExpanded = document.createElement("span");
-      spanExpanded.classList.add("expanded");
-      spanExpanded.textContent = `-`;
-      const spanCollapsed = document.createElement("span");
-      spanCollapsed.classList.add("collapsed");
-      spanCollapsed.textContent = `+`;
-      spanExpand.appendChild(spanCollapsed);
-      spanExpand.appendChild(spanExpanded);
 
       listItem.appendChild(spanName);
       listItem.appendChild(spanDate);
-      listItem.appendChild(spanExpand);
-
-      const todos = document.createElement("ul");
-      todos.classList.add("todos-list");
-      listItem.appendChild(todos);
-
-      //the below may not work, in such a case, use this.drawSidebarTodos(item.todos, listItem)
-      this.drawSidebarTodos(this.PM.getToDos(item), listItem);
 
       list.appendChild(listItem);
     });
