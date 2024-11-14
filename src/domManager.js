@@ -16,36 +16,36 @@ export class DOMManager {
       "test1",
       "2024-1-1",
       "test description",
-      "test priority",
-      "test notes"
+      "low",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras bibendum molestie diam. Quisque placerat sapien sed erat maximus, ac placerat turpis iaculis. In et auctor nibh, in placerat risus. Fusce pellentesque viverra quam, id dignissim libero hendrerit id. Proin quis iaculis nunc. Sed aliquam non elit vitae rhoncus. Vestibulum feugiat. "
     );
     const testTodo2 = new ToDo(
       "test2",
       "2024-1-1",
       "test description",
-      "test priority",
+      "medium",
       "test notes"
     );
     const testTodo3 = new ToDo(
       "test3",
       "2024-1-1",
       "test description",
-      "test priority",
+      "high",
       "test notes"
     );
     const testTodo4 = new ToDo(
       "test4",
       "2024-1-1",
       "test description",
-      "test priority",
+      "medium",
       "test notes"
     );
     const testTodo5 = new ToDo(
       "test5",
       "2024-1-1",
       "test description",
-      "test priority",
-      "test notes"
+      "low",
+      " molestie diam. Quisque  turpis quam, id dignissim libero hendrerit id. Proin quis iaculis nunc. Sed aliquam non elit vitae rhoncus. Vestibulum feugiat. "
     );
     this.PM.addToDo(testTodo);
     this.PM.addToDo(testTodo2);
@@ -98,13 +98,63 @@ export class DOMManager {
   }
   drawContentTodos(project) {
     const content = document.querySelector(".content");
-    content.innerHTML = `<h2 class="content-header">ToDo in project <em>${project.name}</em></h2><div class="container"></div>`;
+    content.innerHTML = `<h2 class="content-header">ToDos in project <em>${project.name}</em></h2><div class="container"></div>`;
     const container = document.querySelector(".container");
     const todos = this.PM.getToDos(project);
     console.log("This should generate in the main body:", todos);
     todos.forEach((todo) => {
       const card = document.createElement("div");
       card.classList.add("todo-card");
+      if (todo.isComplete) {
+        card.classList.add("todo-complete");
+      }
+
+      //Card header including todo title and action icons
+      const todoHeader = document.createElement("div");
+      todoHeader.classList.add("todo-header");
+
+      const name = document.createElement("h3");
+      name.textContent = `${todo.name}`;
+      todoHeader.appendChild(name);
+
+      const actions = document.createElement("ul");
+      actions.classList.add("todo-icons");
+
+      const priority = document.createElement("li");
+      const priorityLevel = `priority-${todo.priority}`;
+      priority.classList.add(priorityLevel);
+      priority.textContent = "■";
+      actions.append(priority);
+
+      const edit = document.createElement("li");
+      edit.classList.add("edit-icon");
+      edit.textContent = "⋯";
+      actions.appendChild(edit);
+
+      const del = document.createElement("li");
+      del.classList.add("delete-icon");
+      del.textContent = "✗";
+      actions.appendChild(del);
+
+      todoHeader.appendChild(actions);
+      //end of header sections, all todos below are separated by empty line
+
+      const date = document.createElement("p");
+      date.classList.add("due-date");
+      date.textContent = `Due Date: ${todo.dueDate}`;
+
+      const description = document.createElement("p");
+      description;
+      description.textContent = `Description: ${todo.description}`;
+
+      const notes = document.createElement("p");
+      notes.textContent = `Notes
+      ${todo.notes}`;
+
+      card.appendChild(todoHeader);
+      card.appendChild(date);
+      card.appendChild(description);
+      card.appendChild(notes);
 
       container.appendChild(card);
     });
