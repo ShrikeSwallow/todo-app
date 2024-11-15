@@ -1,4 +1,5 @@
 import { ProjectManager } from "./objectManagers";
+import { Forms } from "./forms";
 export class DisplayManager {
   constructor() {
     if (DisplayManager.instance) {
@@ -6,6 +7,7 @@ export class DisplayManager {
     }
     DisplayManager.instance = this;
     this.PM = new ProjectManager();
+    this.forms = new Forms();
   }
   drawAll() {
     const projects = document.querySelector(".projects");
@@ -13,6 +15,7 @@ export class DisplayManager {
     this.drawSidebarProjects(this.PM.getProjects(), projects);
     this.drawAddProjectButton(projects);
     this.drawSidebarProjects(this.PM.getCompletedProjects(), completedProjects);
+    this.forms.newProject();
   }
   drawAddProjectButton(target) {
     const addProjectButton = document.createElement("button");
