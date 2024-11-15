@@ -139,21 +139,21 @@ export class DOMManager {
       todoHeader.appendChild(actions);
       //end of header sections, all todos below are separated by empty line
 
+      const description = document.createElement("p");
+      description.classList.add("description");
+      description.textContent = `${todo.description}`;
+
       const date = document.createElement("p");
       date.classList.add("due-date");
       date.textContent = `Due Date: ${todo.dueDate}`;
 
-      const description = document.createElement("p");
-      description;
-      description.textContent = `Description: ${todo.description}`;
-
       const notes = document.createElement("p");
-      notes.textContent = `Notes
-      ${todo.notes}`;
+      notes.classList.add("notes");
+      notes.textContent = `${todo.notes}`;
 
       card.appendChild(todoHeader);
-      card.appendChild(date);
       card.appendChild(description);
+      card.appendChild(date);
       card.appendChild(notes);
 
       container.appendChild(card);

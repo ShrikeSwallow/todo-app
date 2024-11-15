@@ -70,6 +70,11 @@ main {
   gap: 50px;
 }
 
+.todo-card > *,
+.todo-card > * > * {
+  margin: 0 0 0.25rem 0;
+}
+
 .todo-card {
   color: #404040;
   background-color: #fef3c7;
@@ -87,6 +92,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0;
 }
 
 .todo-header h3 {
@@ -122,11 +128,18 @@ main {
   color: #dc2626;
 }
 
-.todo-card > *,
-.todo-card > * > * {
-  margin: 0 0 0.25rem 0;
+.todo-card .due-date,
+.todo-card .description {
+  font-size: 0.8rem;
+  font-weight: 500;
 }
 
-.todo-card p {
-  font-size: 0.8rem;
+.todo-card .description {
+  margin-bottom: 0;
+}
+
+.todo-card .notes {
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
 }
