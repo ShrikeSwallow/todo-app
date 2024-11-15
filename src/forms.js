@@ -54,6 +54,19 @@ export class Forms {
     fieldset.appendChild(dueDate);
     //end of project due date section
 
+    //create buttons
+    const okBtn = document.createElement("button");
+    okBtn.classList.add("form-add-btn");
+    okBtn.type = "submit";
+    okBtn.textContent = "Ok";
+    fieldset.appendChild(okBtn);
+
+    const cancelBtn = document.createElement("button");
+    cancelBtn.classList.add("form-cancel-btn");
+    cancelBtn.type = "reset";
+    cancelBtn.textContent = "Cancel";
+    fieldset.appendChild(cancelBtn);
+
     form.appendChild(fieldset);
     this.forms.appendChild(form);
   }
