@@ -14,7 +14,8 @@ export class Forms {
     input.type = "type";
     input.placeholder = placeholder;
   }
-  newProject(target) {
+  newProject() {
+    const projects = document.querySelector(".projects");
     const form = document.createElement("form");
     form.classList.add("form-new-project", "hidden");
 
@@ -92,7 +93,7 @@ export class Forms {
     fieldset.appendChild(buttons);
 
     form.appendChild(fieldset);
-    target.appendChild(form);
+    projects.appendChild(form);
   }
   newToDo(target) {
     const form = document.createElement("form");

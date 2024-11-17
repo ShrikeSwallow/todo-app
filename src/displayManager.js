@@ -15,6 +15,7 @@ export class DisplayManager {
     const completedProjects = document.querySelector(".completed-projects");
     this.drawSidebarProjects(this.PM.getProjects(), projects);
     this.drawAddProjectButton(projects);
+    this.forms.newProject();
     this.drawSidebarProjects(this.PM.getCompletedProjects(), completedProjects);
     //this.forms.newProject();
   }
@@ -24,7 +25,8 @@ export class DisplayManager {
     addProjectButton.setAttribute("type", "button");
     addProjectButton.textContent = "Add Project";
     target.appendChild(addProjectButton);
-    this.forms.newProject(target);
+
+    //this.forms.newProject(target);
   }
   drawAddTodoButton(target) {
     const card = document.createElement("div");
@@ -55,8 +57,9 @@ export class DisplayManager {
 
       listItem.appendChild(spanName);
       listItem.appendChild(spanDate);
-
-      this.drawContentTodos(item);
+      //remove the line below, and make sure drawTodos
+      //is called only for an active project
+      //this.drawContentTodos(item);
 
       list.appendChild(listItem);
     });
@@ -125,5 +128,8 @@ export class DisplayManager {
     });
     this.drawAddTodoButton(container);
     this.forms.newToDo(container);
+  }
+  toggleProjectForm(form) {
+    form.classList.toggle("hidden");
   }
 }

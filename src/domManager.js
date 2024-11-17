@@ -60,7 +60,4 @@ export class DOMManager {
     //end of test data section
     this.display.drawAll();
   }
-
-  addTodo() {}
-  addProject() {}
 }

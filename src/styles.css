@@ -230,3 +230,7 @@ legend {
   grid-template-columns: repeat(2, minmax(80px, 120px));
   grid-template-rows: 40px;
 }
+
+.hidden {
+  display: none;
+}
