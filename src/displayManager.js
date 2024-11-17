@@ -26,20 +26,14 @@ export class DisplayManager {
     target.appendChild(addProjectButton);
     this.forms.newProject(target);
   }
-  drawAddTodoButton() {
-    const container = document.querySelector(".container");
+  drawAddTodoButton(target) {
     const card = document.createElement("div");
     card.classList.add("todo-card", "add-todo-button-container");
-    // const addTodoBtn = document.createElement("button");
-    // addTodoBtn.classList.add("add-todo-btn");
-    // addTodoBtn.setAttribute("type", "button");
-    // addTodoBtn.textContent = "+";
     const plusSign = document.createElement("img");
     plusSign.src = plusSVG;
     plusSign.alt = "Add ToDo";
-    //card.appendChild(addTodoBtn);
     card.appendChild(plusSign);
-    container.appendChild(card);
+    target.appendChild(card);
   }
   drawSidebarProjects(dataSource, targetElement) {
     const list = targetElement.querySelector("ul");
@@ -129,6 +123,7 @@ export class DisplayManager {
 
       container.appendChild(card);
     });
-    this.drawAddTodoButton();
+    this.drawAddTodoButton(container);
+    this.forms.newToDo(container);
   }
 }

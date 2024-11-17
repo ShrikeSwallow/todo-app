@@ -69,6 +69,7 @@ main {
   grid-template-columns: repeat(auto-fit, 300px);
   grid-auto-rows: min-content;
   gap: 50px;
+  position: relative;
 }
 
 .todo-card > *,
@@ -164,7 +165,7 @@ form {
 }
 
 .form-new-project {
-  display: none;
+  /* display: none; */
   position: absolute;
   top: 13%;
   left: 5%;
@@ -173,11 +174,27 @@ form {
   padding: 8px 4px;
 }
 
-.form-new-project fieldset {
+.form-new-todo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  border-radius: 1.5rem;
+  padding: 8px 4px;
+}
+
+.form-new-project fieldset,
+.form-new-todo fieldset {
   border: none;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+legend {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .form-field {
