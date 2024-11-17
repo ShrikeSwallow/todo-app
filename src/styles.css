@@ -162,6 +162,12 @@ main {
 
 form {
   background-color: white;
+  color: #404040;
+}
+
+input,
+select {
+  color: #404040;
 }
 
 .form-new-project {
@@ -172,6 +178,7 @@ form {
   width: 90%;
   border-radius: 1.5rem;
   padding: 8px 4px;
+  box-shadow: 0px 0px 25px 5px #18181b;
 }
 
 .form-new-todo {
@@ -182,14 +189,30 @@ form {
   width: 50%;
   border-radius: 1.5rem;
   padding: 8px 4px;
+  box-shadow: 0px 0px 150px 5px #18181b;
 }
 
-.form-new-project fieldset,
-.form-new-todo fieldset {
+.form-new-project fieldset {
   border: none;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.form-new-todo fieldset {
+  border: none;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.form-new-todo fieldset > * {
+  grid-column: span 2;
+}
+
+.form-new-todo fieldset > .date-field,
+.form-new-todo fieldset > .priority-field {
+  grid-column: span 1;
 }
 
 legend {
@@ -203,6 +226,7 @@ legend {
   gap: 5px;
 }
 .form-field.form-buttons {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(80px, 120px));
+  grid-template-rows: 40px;
 }

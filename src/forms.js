@@ -125,7 +125,7 @@ export class Forms {
 
     //create due date div and its elements
     const dueDate = document.createElement("div");
-    dueDate.classList.add("form-field");
+    dueDate.classList.add("form-field", "date-field");
 
     const dueDateInput = document.createElement("input");
     dueDateInput.type = "text";
@@ -154,7 +154,7 @@ export class Forms {
 
     //create priority div and its elements
     const priority = document.createElement("div");
-    priority.classList.add("form-field");
+    priority.classList.add("form-field", "priority-field");
 
     const priorityDropdown = document.createElement("select");
     priorityDropdown.title = "priority";
@@ -169,7 +169,7 @@ export class Forms {
     });
     const priorityLabel = document.createElement("label");
     priorityLabel.setAttribute("for", priorityDropdown.id);
-    priority.textContent = "Priority:";
+    priorityLabel.textContent = "Priority:";
 
     priority.appendChild(priorityLabel);
     priority.appendChild(priorityDropdown);
