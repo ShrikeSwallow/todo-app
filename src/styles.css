@@ -29,6 +29,7 @@ main {
   grid-template-columns: 300px 1fr;
 }
 .sidebar {
+  position: relative;
   background-color: #701a75;
   padding: 0 5%;
 }
@@ -142,4 +143,34 @@ main {
   font-size: 0.75rem;
   font-weight: 300;
   margin-bottom: 0.5rem;
+}
+
+form {
+  background-color: white;
+}
+
+.form-new-project {
+  position: absolute;
+  top: 13%;
+  left: 5%;
+  width: 90%;
+  border-radius: 1.5rem;
+  padding: 8px 4px;
+}
+
+.form-new-project fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form-field.form-buttons {
+  display: flex;
+  flex-direction: row;
 }

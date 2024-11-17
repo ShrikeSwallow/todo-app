@@ -4,7 +4,7 @@ export class Forms {
       return Forms.instance;
     }
     Forms.instance = this;
-    this.forms = document.querySelector(".forms-container");
+    //this.forms = document.querySelector(".forms-container");
   }
   convertTextToDate(input) {
     input.type = "date";
@@ -14,7 +14,7 @@ export class Forms {
     input.type = "type";
     input.placeholder = placeholder;
   }
-  newProject() {
+  newProject(target) {
     const form = document.createElement("form");
     form.classList.add("form-new-project", "hidden");
 
@@ -45,13 +45,13 @@ export class Forms {
 
     //create due date div and its elements
     const dueDate = document.createElement("div");
-    name.classList.add("form-field");
+    dueDate.classList.add("form-field");
 
     const dueDateInput = document.createElement("input");
     /*basic data input implementation
     dueDateInput.type = "date";
     */
-    dueDate.type = "text";
+    dueDateInput.type = "text";
     dueDateInput.id = "project-due-date";
     dueDateInput.name = "project-due-date";
     dueDateInput.placeholder = "DD/MM/YYYY";
@@ -71,24 +71,28 @@ export class Forms {
     dueDateInput.addEventListener("blur", (event) => {
       console.log("Mouse outside date");
       this.convertDateToText(event.currentTarget);
+      console.log(dueDateInput.value);
     });
     //end of project due date section
 
     //create buttons
+    const buttons = document.createElement("div");
+    buttons.classList.add("form-field", "form-buttons");
     const okBtn = document.createElement("button");
     okBtn.classList.add("form-add-btn");
     okBtn.type = "submit";
     okBtn.textContent = "Ok";
-    fieldset.appendChild(okBtn);
+    buttons.appendChild(okBtn);
 
     const cancelBtn = document.createElement("button");
     cancelBtn.classList.add("form-cancel-btn");
     cancelBtn.type = "reset";
     cancelBtn.textContent = "Cancel";
-    fieldset.appendChild(cancelBtn);
+    buttons.appendChild(cancelBtn);
+    fieldset.appendChild(buttons);
 
     form.appendChild(fieldset);
-    this.forms.appendChild(form);
+    target.appendChild(form);
   }
   editProject(project) {
     const form = document.createElement("form");

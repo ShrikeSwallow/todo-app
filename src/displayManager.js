@@ -15,7 +15,7 @@ export class DisplayManager {
     this.drawSidebarProjects(this.PM.getProjects(), projects);
     this.drawAddProjectButton(projects);
     this.drawSidebarProjects(this.PM.getCompletedProjects(), completedProjects);
-    this.forms.newProject();
+    //this.forms.newProject();
   }
   drawAddProjectButton(target) {
     const addProjectButton = document.createElement("button");
@@ -23,6 +23,7 @@ export class DisplayManager {
     addProjectButton.setAttribute("type", "button");
     addProjectButton.textContent = "Add Project";
     target.appendChild(addProjectButton);
+    this.forms.newProject(target);
   }
   drawSidebarProjects(dataSource, targetElement) {
     const list = targetElement.querySelector("ul");
