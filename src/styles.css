@@ -145,11 +145,26 @@ main {
   margin-bottom: 0.5rem;
 }
 
+.add-todo-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.add-todo-btn {
+  align-self: flex-start;
+  background-color: transparent;
+  border: none;
+  line-height: 1;
+  font-weight: 700;
+  font-size: 290px;
+}
+
 form {
   background-color: white;
 }
 
 .form-new-project {
+  display: none;
   position: absolute;
   top: 13%;
   left: 5%;
