@@ -15,7 +15,7 @@ export class Forms {
     input.placeholder = placeholder;
   }
   newProject() {
-    const projects = document.querySelector(".projects");
+    const projects = document.querySelector(".live-projects");
     const form = document.createElement("form");
     form.classList.add("form-new-project", "hidden");
 

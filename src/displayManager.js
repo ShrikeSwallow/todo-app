@@ -11,7 +11,7 @@ export class DisplayManager {
     this.forms = new Forms();
   }
   drawAll() {
-    const projects = document.querySelector(".projects");
+    const projects = document.querySelector(".live-projects");
     const completedProjects = document.querySelector(".completed-projects");
     this.drawSidebarProjects(this.PM.getProjects(), projects);
     this.drawAddProjectButton(projects);
@@ -43,9 +43,10 @@ export class DisplayManager {
               <span class="project-name">Project Name</span>
               <span class="due-date">Due Date</span>
             </li>`;
-    dataSource.forEach((item) => {
+    dataSource.forEach((item, index) => {
       const listItem = document.createElement("li");
       listItem.classList.add("project");
+      listItem.dataset.index = index;
 
       const spanName = document.createElement("span");
       spanName.classList.add("project-name");

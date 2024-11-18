@@ -10,7 +10,6 @@ export class DOMManager {
     DOMManager.instance = this;
     this.display = new DisplayManager();
     this.PM = new ProjectManager();
-    this.activeProject = this.PM.projects[0];
   }
   initialize() {
     /* test section 

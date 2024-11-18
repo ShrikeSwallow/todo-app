@@ -16,9 +16,20 @@ const addProjectBtn = document.querySelector(".add-project-btn");
 const projectForm = document.querySelector(".form-new-project");
 const projectName = document.querySelector("#project-name");
 const projectDueDate = document.querySelector("#project-due-date");
-const liveProjects = document.querySelector(".projects");
-const allProjects = document.querySelectorAll(".project");
+const liveProjects = document.querySelector(".live-projects");
+let allProjects = document.querySelectorAll(".project");
 
+const highlighter = () => {
+  allProjects.forEach((project) => {
+    project.addEventListener("click", (event) => {
+      allProjects.forEach((project) => project.classList.remove("active"));
+      console.log(event.currentTarget);
+      display.highlightActive(event.currentTarget);
+    });
+  });
+};
+
+highlighter();
 addProjectBtn.addEventListener("click", () => {
   display.toggleProjectForm(projectForm);
 });
@@ -28,11 +39,7 @@ projectForm.addEventListener("submit", (event) => {
   dom.PM.addProject(new Project(projectName.value, projectDueDate.value));
   display.drawSidebarProjects(PM.getProjects(), liveProjects);
   display.toggleProjectForm(projectForm);
-});
-
-allProjects.forEach((project) => {
-  project.addEventListener("click", (event) => {
-    allProjects.forEach((project) => project.classList.remove("active"));
-    display.highlightActive(event.currentTarget);
-  });
+  console.log((allProjects = document.querySelectorAll(".project")));
+  allProjects = document.querySelectorAll(".project");
+  highlighter();
 });
