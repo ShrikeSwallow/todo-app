@@ -8,7 +8,9 @@ export class ProjectManager {
     ProjectManager.instance = this;
     this.projects = [new Project("Default", "2000-12-12")];
     this.default = this.projects[0];
-    this.completedProjects = [];
+    this.completedProjects = [
+      new Project("Completed Project Test", "1999-12-12"),
+    ];
   }
   addProject(project) {
     this.projects.push(project);

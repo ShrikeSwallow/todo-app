@@ -231,6 +231,11 @@ legend {
   grid-template-rows: 40px;
 }
 
+.active {
+  background-color: lightyellow;
+  color: black;
+}
+
 .hidden {
   display: none;
 }

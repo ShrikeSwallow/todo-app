@@ -129,6 +129,9 @@ export class DisplayManager {
     this.drawAddTodoButton(container);
     this.forms.newToDo(container);
   }
+  highlightActive(project) {
+    project.classList.add("active");
+  }
   toggleProjectForm(form) {
     form.classList.toggle("hidden");
   }

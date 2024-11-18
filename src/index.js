@@ -9,13 +9,15 @@ console.log("Loading succesful");
 
 const dom = new DOMManager();
 const display = new DisplayManager();
-//const PM = new ProjectManager();
+const PM = new ProjectManager();
 dom.initialize();
 
 const addProjectBtn = document.querySelector(".add-project-btn");
 const projectForm = document.querySelector(".form-new-project");
 const projectName = document.querySelector("#project-name");
 const projectDueDate = document.querySelector("#project-due-date");
+const liveProjects = document.querySelector(".projects");
+const allProjects = document.querySelectorAll(".project");
 
 addProjectBtn.addEventListener("click", () => {
   display.toggleProjectForm(projectForm);
@@ -24,5 +26,13 @@ addProjectBtn.addEventListener("click", () => {
 projectForm.addEventListener("submit", (event) => {
   event.preventDefault();
   dom.PM.addProject(new Project(projectName.value, projectDueDate.value));
-  display.drawAll();
+  display.drawSidebarProjects(PM.getProjects(), liveProjects);
+  display.toggleProjectForm(projectForm);
+});
+
+allProjects.forEach((project) => {
+  project.addEventListener("click", (event) => {
+    allProjects.forEach((project) => project.classList.remove("active"));
+    display.highlightActive(event.currentTarget);
+  });
 });
