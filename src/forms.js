@@ -95,7 +95,8 @@ export class Forms {
     form.appendChild(fieldset);
     projects.appendChild(form);
   }
-  newToDo(target) {
+  newToDo() {
+    const main = document.querySelector("main");
     const form = document.createElement("form");
     form.classList.add("form-new-todo", "hidden");
 
@@ -158,9 +159,9 @@ export class Forms {
     priority.classList.add("form-field", "priority-field");
 
     const priorityDropdown = document.createElement("select");
-    priorityDropdown.title = "priority";
-    priorityDropdown.name = "priority";
-    priorityDropdown.id = "priority";
+    priorityDropdown.title = "todo-priority";
+    priorityDropdown.name = "todo-priority";
+    priorityDropdown.id = "todo-priority";
     const priorities = ["Low", "Medium", "High"];
     priorities.forEach((priority) => {
       const option = document.createElement("option");
@@ -232,7 +233,7 @@ export class Forms {
     fieldset.appendChild(buttons);
 
     form.appendChild(fieldset);
-    target.appendChild(form);
+    main.appendChild(form);
   }
   editProject(project) {
     const form = document.createElement("form");

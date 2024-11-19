@@ -187,10 +187,10 @@ select {
 }
 
 .form-new-todo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 25%;
+  left: 35%;
+  /* transform: translate(-50%, -50%); */
   width: 50%;
   border-radius: 1.5rem;
   padding: 8px 4px;
@@ -238,6 +238,7 @@ legend {
 
 .active {
   background-color: lightyellow;
+  margin: 0, 3px;
   color: black;
 }
 

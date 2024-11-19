@@ -16,6 +16,7 @@ export class DisplayManager {
     this.drawSidebarProjects(this.PM.getProjects(), projects);
     this.drawAddProjectButton(projects);
     this.forms.newProject();
+    this.forms.newToDo();
     //this.forms.newProject();
   }
   drawAddProjectButton(target) {
@@ -69,7 +70,7 @@ export class DisplayManager {
     content.innerHTML = `<h2 class="content-header">ToDos in project <em>${project.name}</em></h2><div class="container"></div>`;
     const container = document.querySelector(".container");
     const todos = this.PM.getToDos(project);
-    console.log("This should generate in the main body:", todos);
+    //console.log("This should generate in the main body:", todos);
     todos.forEach((todo) => {
       const card = document.createElement("div");
       card.classList.add("todo-card");
@@ -127,7 +128,6 @@ export class DisplayManager {
       container.appendChild(card);
     });
     this.drawAddTodoButton(container);
-    this.forms.newToDo(container);
   }
   highlightActive(project) {
     project.classList.add("active");

@@ -10,6 +10,7 @@ export class DOMManager {
     DOMManager.instance = this;
     this.display = new DisplayManager();
     this.PM = new ProjectManager();
+    this.activeProject = this.PM.default;
   }
   initialize() {
     /* test section 
@@ -54,10 +55,7 @@ export class DOMManager {
     this.PM.addToDo(testTodo3);
     this.PM.addToDo(testTodo4);
     this.PM.addToDo(testTodo5);
-    console.log(testTodo);
     this.PM.completeToDo(testTodo);
-    console.log(this.PM.projects[0]);
-    console.log("active project", this.activeProject);
     //end of test data section
     this.display.drawAll();
   }
