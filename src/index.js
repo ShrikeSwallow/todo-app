@@ -23,8 +23,10 @@ const highlighter = () => {
   allProjects.forEach((project) => {
     project.addEventListener("click", (event) => {
       allProjects.forEach((project) => project.classList.remove("active"));
-      console.log(event.currentTarget);
+      console.log(event.currentTarget.dataset.index);
       display.highlightActive(event.currentTarget);
+      let activeProject = PM.projects[event.currentTarget.dataset.index];
+      display.drawContentTodos(activeProject);
     });
   });
 };
