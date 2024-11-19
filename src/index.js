@@ -37,11 +37,6 @@ const highlighter = () => {
       display.drawContentTodos(activeProject);
       addToDoBtn = document.querySelector(".add-todo-button-container");
       addToDoBtn.addEventListener("click", () => {
-        /*const clickEvent = new Event("click", {
-          bubbles: true,
-          cancelable: false,
-        });
-        project.dispatchEvent(clickEvent);*/
         display.toggleProjectForm(toDoForm);
       });
     });
@@ -80,7 +75,14 @@ toDoForm?.addEventListener("submit", (event) => {
     ),
     activeProject
   );
+  let activeIndex = PM.projects.indexOf(activeProject);
+  const toHighlight = document.querySelector(`[data-index="${activeIndex}"]`);
   display.drawContentTodos(activeProject);
+  const clickEvent = new Event("click", {
+    bubbles: true,
+    cancelable: false,
+  });
+  toHighlight.dispatchEvent(clickEvent);
   display.toggleProjectForm(toDoForm);
 });
 
