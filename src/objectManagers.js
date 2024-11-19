@@ -8,9 +8,6 @@ export class ProjectManager {
     ProjectManager.instance = this;
     this.projects = [new Project("Default", "2000-12-12")];
     this.default = this.projects[0];
-    this.completedProjects = [
-      new Project("Completed Project Test", "1999-12-12"),
-    ];
   }
   addProject(project) {
     this.projects.push(project);
@@ -21,20 +18,11 @@ export class ProjectManager {
   changeProjectDueDate(project, newDate) {
     this.projects[this.projects.indexOf(project)].changeDate = newDate;
   }
-  completeProject(project) {
-    project.complete();
-    this.completedProjects.push(
-      this.projects.splice(this.projects.indexOf(project), 1)
-    );
-  }
   deleteProject(project) {
     this.projects.splice(this.projects.indexOf(project), 1);
   }
   getProjects() {
     return this.projects;
-  }
-  getCompletedProjects() {
-    return this.completedProjects;
   }
   showAllProjects() {
     this.projects.forEach((project) => {

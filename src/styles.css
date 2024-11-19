@@ -47,6 +47,11 @@ main {
   justify-self: end;
 }
 
+.project-name.header,
+.due-date.header {
+  font-weight: 500;
+}
+
 .sidebar .add-project-btn {
   justify-self: start;
   border: none;

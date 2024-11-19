@@ -16,7 +16,6 @@ export class DisplayManager {
     this.drawSidebarProjects(this.PM.getProjects(), projects);
     this.drawAddProjectButton(projects);
     this.forms.newProject();
-    this.drawSidebarProjects(this.PM.getCompletedProjects(), completedProjects);
     //this.forms.newProject();
   }
   drawAddProjectButton(target) {
@@ -40,8 +39,8 @@ export class DisplayManager {
   drawSidebarProjects(dataSource, targetElement) {
     const list = targetElement.querySelector("ul");
     list.innerHTML = `<li>
-              <span class="project-name">Project Name</span>
-              <span class="due-date">Due Date</span>
+              <span class="project-name header">Project Name</span>
+              <span class="due-date header">Due Date</span>
             </li>`;
     dataSource.forEach((item, index) => {
       const listItem = document.createElement("li");
