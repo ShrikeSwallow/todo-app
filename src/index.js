@@ -58,10 +58,14 @@ const addTodo = () => {
 
 const editToDo = () => {
   editButtons = document.querySelectorAll(".edit-icon");
-  editButtons.forEach((editButton) => {
-    editButton.addEventListener("click", (event) => {
-      display.drawEditForm(activeProject);
+  editButtons.forEach((editButton, index) => {
+    /*editButton.addEventListener("click", () => {
+      display.drawEditForm(activeProject.todos[index]);
     });
+    const editForm = document.querySelector(".form-edit-todo");
+    editForm?.addEventListener("blur", () => {
+      editForm.remove();
+    });*/
   });
 };
 
@@ -87,6 +91,7 @@ const highlighter = () => {
         activeProject
       );
       display.drawContentTodos(activeProject);
+      editToDo();
       deleteToDo();
       addTodo();
     });
@@ -103,7 +108,7 @@ projectForm.addEventListener("submit", (event) => {
   event.preventDefault();
   dom.PM.addProject(new Project(projectName.value, projectDueDate.value));
   display.drawSidebarProjects(PM.getProjects(), liveProjects);
-  display.toggleProjectForm(projectForm);
+  projectForm.reset();
   console.log((allProjects = document.querySelectorAll(".project")));
   allProjects = document.querySelectorAll(".project");
   highlighter();
@@ -127,7 +132,7 @@ toDoForm?.addEventListener("submit", (event) => {
     activeProject
   );
   clickEmulator();
-  display.toggleProjectForm(toDoForm);
+  toDoForm.reset();
 });
 
 toDoForm?.addEventListener("reset", (event) => {

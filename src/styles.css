@@ -186,7 +186,8 @@ select {
   box-shadow: 0px 0px 25px 5px #18181b;
 }
 
-.form-new-todo {
+.form-new-todo,
+.form-edit-todo {
   position: fixed;
   top: 25%;
   left: 35%;
@@ -204,19 +205,23 @@ select {
   gap: 20px;
 }
 
-.form-new-todo fieldset {
+.form-new-todo fieldset,
+.form-edit-todo fieldset {
   border: none;
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 1fr;
 }
 
-.form-new-todo fieldset > * {
+.form-new-todo fieldset > *,
+.form-edit-todo fieldset > * {
   grid-column: span 2;
 }
 
 .form-new-todo fieldset > .date-field,
-.form-new-todo fieldset > .priority-field {
+.form-new-todo fieldset > .priority-field,
+.form-edit-todo fieldset > .date-field,
+.form-edit-todo fieldset > .priority-field {
   grid-column: span 1;
 }
 

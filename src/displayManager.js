@@ -132,6 +132,7 @@ export class DisplayManager {
   drawEditForm(todo) {
     this.forms.editToDo(todo);
   }
+
   highlightActive(project) {
     project.classList.add("active");
   }
