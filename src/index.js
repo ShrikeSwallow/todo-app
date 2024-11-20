@@ -28,6 +28,37 @@ const toDoPriority = document.querySelector("#todo-priority");
 const toDoDescription = document.querySelector("#todo-description");
 const toDoNotes = document.querySelector("#todo-notes");
 
+let editButtons = document.querySelectorAll(".edit-icon");
+let deleteButtons = document.querySelectorAll(".delete-icon");
+
+const refreshDynamicSelectors = () => {
+  allProjects = document.querySelectorAll(".project");
+  addToDoBtn = document.querySelector(".add-todo-button-container");
+  editButtons = document.querySelectorAll(".edit-icon");
+  deleteButtons = document.querySelectorAll(".delete-icon");
+};
+
+const editToDo = () => {
+  editButtons = document.querySelectorAll(".edit-icon");
+  editButtons.forEach((editButton) => {
+    editButton.addEventListener("click", (event) => {
+      display.drawEditForm(activeProject);
+    });
+  });
+};
+
+const deleteToDo = () => {
+  deleteButtons = document.querySelectorAll(".delete-icon");
+  deleteButtons.forEach((deleteButton, index) => {
+    deleteButton.addEventListener("click", (event) => {
+      console.log(index);
+      PM.removeToDo(activeProject.todos[index], activeProject);
+      display.drawContentTodos(activeProject);
+      deleteToDo();
+    });
+  });
+};
+
 const highlighter = () => {
   allProjects.forEach((project) => {
     project.addEventListener("click", (event) => {
@@ -35,6 +66,7 @@ const highlighter = () => {
       display.highlightActive(event.currentTarget);
       activeProject = PM.projects[event.currentTarget.dataset.index];
       display.drawContentTodos(activeProject);
+      deleteToDo();
       addToDoBtn = document.querySelector(".add-todo-button-container");
       addToDoBtn.addEventListener("click", () => {
         display.toggleProjectForm(toDoForm);

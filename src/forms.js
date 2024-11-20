@@ -238,7 +238,7 @@ export class Forms {
   editToDo(todo) {
     const main = document.querySelector("main");
     const form = document.createElement("form");
-    form.classList.add("form-edit-todo", "hidden");
+    form.classList.add("form-edit-todo");
 
     const fieldset = document.createElement("fieldset");
     const legend = document.createElement("legend");

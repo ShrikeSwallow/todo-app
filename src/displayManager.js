@@ -129,6 +129,9 @@ export class DisplayManager {
     });
     this.drawAddTodoButton(container);
   }
+  drawEditForm(todo) {
+    this.forms.editToDo(todo);
+  }
   highlightActive(project) {
     project.classList.add("active");
   }
