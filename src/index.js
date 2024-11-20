@@ -134,6 +134,6 @@ toDoForm?.addEventListener("reset", (event) => {
   display.toggleProjectForm(toDoForm);
 });
 
-addToDoBtn?.addEventListener("click", () => {
+/*addToDoBtn?.addEventListener("click", () => {
   display.toggleProjectForm(toDoForm);
-});
+});*/
