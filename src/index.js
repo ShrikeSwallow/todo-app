@@ -31,6 +31,17 @@ const toDoNotes = document.querySelector("#todo-notes");
 let editButtons = document.querySelectorAll(".edit-icon");
 let deleteButtons = document.querySelectorAll(".delete-icon");
 
+const clickEmulator = () => {
+  const activeIndex = PM.projects.indexOf(activeProject);
+  const toHighlight = document.querySelector(`[data-index="${activeIndex}"]`);
+  display.drawContentTodos(activeProject);
+  const clickEvent = new Event("click", {
+    bubbles: true,
+    cancelable: false,
+  });
+  toHighlight.dispatchEvent(clickEvent);
+};
+
 const refreshDynamicSelectors = () => {
   allProjects = document.querySelectorAll(".project");
   addToDoBtn = document.querySelector(".add-todo-button-container");
@@ -53,8 +64,7 @@ const deleteToDo = () => {
     deleteButton.addEventListener("click", (event) => {
       console.log(index);
       PM.removeToDo(activeProject.todos[index], activeProject);
-      display.drawContentTodos(activeProject);
-      deleteToDo();
+      clickEmulator();
     });
   });
 };
@@ -76,6 +86,7 @@ const highlighter = () => {
 };
 
 highlighter();
+clickEmulator();
 console.log("After highlighter function called originally: ", addToDoBtn);
 addProjectBtn.addEventListener("click", () => {
   display.toggleProjectForm(projectForm);
@@ -107,14 +118,7 @@ toDoForm?.addEventListener("submit", (event) => {
     ),
     activeProject
   );
-  let activeIndex = PM.projects.indexOf(activeProject);
-  const toHighlight = document.querySelector(`[data-index="${activeIndex}"]`);
-  display.drawContentTodos(activeProject);
-  const clickEvent = new Event("click", {
-    bubbles: true,
-    cancelable: false,
-  });
-  toHighlight.dispatchEvent(clickEvent);
+  clickEmulator();
   display.toggleProjectForm(toDoForm);
 });
 
