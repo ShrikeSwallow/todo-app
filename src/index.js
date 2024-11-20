@@ -81,7 +81,6 @@ const highlighter = () => {
     project.addEventListener("click", (event) => {
       allProjects.forEach((project) => project.classList.remove("active"));
       display.highlightActive(event.currentTarget);
-      console.log(event.currentTarget);
       activeProject = PM.projects[event.currentTarget.dataset.index];
       console.log(
         "Active project after highligher loads on page load: ",
@@ -93,11 +92,9 @@ const highlighter = () => {
     });
   });
 };
-
-console.log(dom.activeProject);
 highlighter();
 clickEmulator();
-console.log("After highlighter function called originally: ", activeProject);
+console.log("After highlighter function called originally: ", addToDoBtn);
 addProjectBtn.addEventListener("click", () => {
   display.toggleProjectForm(projectForm);
 });
@@ -107,8 +104,9 @@ projectForm.addEventListener("submit", (event) => {
   dom.PM.addProject(new Project(projectName.value, projectDueDate.value));
   display.drawSidebarProjects(PM.getProjects(), liveProjects);
   display.toggleProjectForm(projectForm);
+  console.log((allProjects = document.querySelectorAll(".project")));
+  allProjects = document.querySelectorAll(".project");
   highlighter();
-  conePM.projects.at(-1);
   clickEmulator();
 });
 
@@ -133,5 +131,9 @@ toDoForm?.addEventListener("submit", (event) => {
 });
 
 toDoForm?.addEventListener("reset", (event) => {
+  display.toggleProjectForm(toDoForm);
+});
+
+addToDoBtn?.addEventListener("click", () => {
   display.toggleProjectForm(toDoForm);
 });
