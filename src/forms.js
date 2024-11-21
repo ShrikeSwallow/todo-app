@@ -245,6 +245,11 @@ export class Forms {
     legend.textContent = "Edit ToDo";
     fieldset.appendChild(legend);
 
+    //create Header div specifically for Edit Form
+    //which contains name div, TODO completion and option to move TODO to another project
+    const editHeader = document.createElement("div");
+    editHeader.classList.add("edit-header");
+
     //create TODO name div and its elements
     const name = document.createElement("div");
     name.classList.add("form-field");
@@ -262,8 +267,32 @@ export class Forms {
 
     name.appendChild(nameLabel);
     name.appendChild(nameInput);
-    fieldset.appendChild(name);
+    editHeader.appendChild(name);
     //end of project name section
+
+    //create checkbox for ToDo completion
+    const complete = document.createElement("div");
+    complete.classList.add("form-field", "complete-checkbox");
+
+    const completeBox = document.createElement("input");
+    completeBox.type = "checkbox";
+    completeBox.id = "edit-todo-complete";
+    completeBox.name = "edit-todo-complete";
+
+    const completeLabel = document.createElement("label");
+    completeLabel.setAttribute("for", completeBox.id);
+    completeLabel.textContent = "Mark as completed";
+
+    editHeader.appendChild(completeBox);
+    editHeader.appendChild(completeLabel);
+    //end of complete checkbox section
+
+    //create a dropdown to choose a project todo should move to
+    const moveToDo = document.createElement("div");
+    //end of project dropdown section
+
+    fieldset.appendChild(editHeader);
+    //end of Edit From Header Section
 
     //create due date div and its elements
     const dueDate = document.createElement("div");
