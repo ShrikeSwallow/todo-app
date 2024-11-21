@@ -56,7 +56,7 @@ export class DOMManager {
     this.PM.addToDo(testTodo3);
     this.PM.addToDo(testTodo4);
     this.PM.addToDo(testTodo5);
-    this.PM.completeToDo(testTodo);
+    this.PM.complete(testTodo);
     //end of test data section
     this.display.drawAll();
   }
@@ -78,6 +78,7 @@ export class DOMManager {
 
     const editToDoForm = document.querySelector(".form-edit-todo");
     const editToDoName = document.querySelector("#edit-todo-name");
+    const editToDoComplete = document.querySelector("#edit-todo-complete");
     const editToDoDueDate = document.querySelector("#edit-todo-due-date");
     const editToDoPriority = document.querySelector("#edit-todo-priority");
     const editToDoDescription = document.querySelector(
@@ -121,6 +122,11 @@ export class DOMManager {
         editButton.addEventListener("click", () => {
           this.activeToDo = this.activeProject.todos[index];
           editToDoName.value = this.activeToDo.name;
+          if (this.activeToDo.isComplete) {
+            editToDoComplete.checked = "true";
+          } else {
+            editToDoComplete.removeAttribute("checked");
+          }
           editToDoDueDate.value = this.activeToDo.dueDate;
           editToDoPriority.value = this.activeToDo.priority;
           editToDoDescription.value = this.activeToDo.description;
@@ -208,6 +214,12 @@ export class DOMManager {
     editToDoForm?.addEventListener("submit", (event) => {
       event.preventDefault();
       this.PM.renameToDo(this.activeToDo, editToDoName.value);
+      //console.log(this.activeToDo.isComplete);
+      if (editToDoComplete.checked) {
+        this.PM.complete(this.activeToDo);
+      } else {
+        this.PM.uncomplete(this.activeToDo);
+      }
       this.PM.changeToDoDueDate(this.activeToDo, editToDoDueDate.value);
       this.PM.changeToDoDescription(this.activeToDo, editToDoDescription.value);
       this.PM.changeToDoPriority(this.activeToDo, editToDoPriority.value);

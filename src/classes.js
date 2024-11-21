@@ -10,8 +10,8 @@ class Task {
   set changeDate(newDate) {
     this.dueDate = newDate;
   }
-  complete() {
-    this.isComplete = true;
+  toggleComplete() {
+    this.isComplete = !this.isComplete;
   }
 }
 

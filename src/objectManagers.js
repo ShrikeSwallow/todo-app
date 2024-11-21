@@ -62,7 +62,10 @@ export class ProjectManager {
   changeToDoNotes(todo, newNotes) {
     todo.changeNotes = newNotes;
   }
-  completeToDo(todo) {
-    todo.complete();
+  complete(todo) {
+    todo.isComplete = true;
+  }
+  uncomplete(todo) {
+    todo.isComplete = false;
   }
 }

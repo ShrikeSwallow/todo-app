@@ -278,6 +278,7 @@ export class Forms {
     completeBox.type = "checkbox";
     completeBox.id = "edit-todo-complete";
     completeBox.name = "edit-todo-complete";
+    completeBox.value = "true";
 
     const completeLabel = document.createElement("label");
     completeLabel.setAttribute("for", completeBox.id);
