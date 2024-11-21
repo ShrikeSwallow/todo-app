@@ -235,7 +235,7 @@ export class Forms {
     form.appendChild(fieldset);
     main.appendChild(form);
   }
-  editToDo(todo) {
+  editToDoForm() {
     const main = document.querySelector("main");
     const form = document.createElement("form");
     form.classList.add("form-edit-todo");
@@ -251,9 +251,9 @@ export class Forms {
 
     const nameInput = document.createElement("input");
     nameInput.type = "text";
-    nameInput.id = "todo-name";
-    nameInput.name = "todo-name";
-    nameInput.placeholder = `${todo.name}`;
+    nameInput.id = "edit-todo-name";
+    nameInput.name = "edit-todo-name";
+    nameInput.placeholder = "ToDo Name...";
     nameInput.required = true;
 
     const nameLabel = document.createElement("label");
@@ -271,9 +271,9 @@ export class Forms {
 
     const dueDateInput = document.createElement("input");
     dueDateInput.type = "text";
-    dueDateInput.id = "todo-due-date";
-    dueDateInput.name = "todo-due-date";
-    dueDateInput.placeholder = `${todo.dueDate}`;
+    dueDateInput.id = "edit-todo-due-date";
+    dueDateInput.name = "edit-todo-due-date";
+    dueDateInput.placeholder = "DD/MM/YYYY";
     dueDateInput.required = true;
 
     const dueDateLabel = document.createElement("label");
@@ -299,17 +299,14 @@ export class Forms {
     priority.classList.add("form-field", "priority-field");
 
     const priorityDropdown = document.createElement("select");
-    priorityDropdown.title = "todo-priority";
-    priorityDropdown.name = "todo-priority";
-    priorityDropdown.id = "todo-priority";
+    priorityDropdown.title = "edit-todo-priority";
+    priorityDropdown.name = "edit-todo-priority";
+    priorityDropdown.id = "edit-todo-priority";
     const priorities = ["Low", "Medium", "High"];
     priorities.forEach((priority) => {
       const option = document.createElement("option");
       option.value = priority.toLowerCase();
       option.textContent = priority;
-      if (todo.priority === option.value) {
-        option.selected = "selected";
-      }
       priorityDropdown.appendChild(option);
     });
     const priorityLabel = document.createElement("label");
@@ -327,9 +324,9 @@ export class Forms {
 
     const descriptionInput = document.createElement("input");
     descriptionInput.type = "text";
-    descriptionInput.id = "todo-description";
-    descriptionInput.name = "todo-description";
-    descriptionInput.placeholder = `${todo.description}`;
+    descriptionInput.id = "edit-todo-description";
+    descriptionInput.name = "edit-todo-description";
+    descriptionInput.placeholder = "Description...";
 
     const descriptionLabel = document.createElement("label");
     descriptionLabel.setAttribute("for", descriptionInput.id);
@@ -345,9 +342,9 @@ export class Forms {
     notes.classList.add("form-field");
 
     const notesArea = document.createElement("textarea");
-    notesArea.id = "todo-notes";
-    notesArea.name = "todo-notes";
-    notesArea.placeholder = `${todo.notes}`;
+    notesArea.id = "edit-todo-notes";
+    notesArea.name = "edit-todo-notes";
+    notesArea.placeholder = "Notes...";
     notesArea.rows = "4";
 
     const notesLabel = document.createElement("label");
