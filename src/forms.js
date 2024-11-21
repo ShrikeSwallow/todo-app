@@ -252,7 +252,7 @@ export class Forms {
 
     //create TODO name div and its elements
     const name = document.createElement("div");
-    name.classList.add("form-field");
+    name.classList.add("form-field", "name-field");
 
     const nameInput = document.createElement("input");
     nameInput.type = "text";
@@ -270,6 +270,24 @@ export class Forms {
     editHeader.appendChild(name);
     //end of project name section
 
+    //create a dropdown to choose a project todo should move to
+    const moveToDo = document.createElement("div");
+    moveToDo.classList.add("form-field", "move-to-do-field");
+    const projectDropdown = document.createElement("select");
+    projectDropdown.title = "edit-todo-project";
+    projectDropdown.name = "edit-todo-project";
+    projectDropdown.id = "edit-todo-project";
+
+    const projectLabel = document.createElement("label");
+    projectLabel.setAttribute("for", projectDropdown.id);
+    projectLabel.textContent = "Project:";
+
+    moveToDo.appendChild(projectLabel);
+    moveToDo.appendChild(projectDropdown);
+
+    editHeader.appendChild(moveToDo);
+    //end of project dropdown section
+
     //create checkbox for ToDo completion
     const complete = document.createElement("div");
     complete.classList.add("form-field", "complete-checkbox");
@@ -284,13 +302,11 @@ export class Forms {
     completeLabel.setAttribute("for", completeBox.id);
     completeLabel.textContent = "Mark as completed";
 
-    editHeader.appendChild(completeBox);
-    editHeader.appendChild(completeLabel);
-    //end of complete checkbox section
+    complete.appendChild(completeBox);
+    complete.appendChild(completeLabel);
 
-    //create a dropdown to choose a project todo should move to
-    const moveToDo = document.createElement("div");
-    //end of project dropdown section
+    editHeader.appendChild(complete);
+    //end of complete checkbox section
 
     fieldset.appendChild(editHeader);
     //end of Edit From Header Section

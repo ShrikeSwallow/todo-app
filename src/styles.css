@@ -241,6 +241,27 @@ legend {
   grid-template-rows: 40px;
 }
 
+.edit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.edit-header .name-field,
+.edit-header .move-to-do-field {
+  flex: 1;
+}
+
+.complete-checkbox {
+  font-size: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+  align-self: flex-end;
+}
+
 .active {
   background-color: lightyellow;
   margin: 0, 3px;
