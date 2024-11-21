@@ -3,6 +3,7 @@ import { ProjectManager } from "./objectManagers";
 import { DisplayManager } from "./displayManager";
 
 export class DOMManager {
+  activeToDo;
   constructor() {
     if (DOMManager.instance) {
       return DOMManager.instance;
@@ -76,6 +77,13 @@ export class DOMManager {
     const toDoNotes = document.querySelector("#todo-notes");
 
     const editToDoForm = document.querySelector(".form-edit-todo");
+    const editToDoName = document.querySelector("#edit-todo-name");
+    const editToDoDueDate = document.querySelector("#edit-todo-due-date");
+    const editToDoPriority = document.querySelector("#edit-todo-priority");
+    const editToDoDescription = document.querySelector(
+      "#edit-todo-description"
+    );
+    const editToDoNotes = document.querySelector("#edit-todo-notes");
 
     let editButtons = document.querySelectorAll(".edit-icon");
     let deleteButtons = document.querySelectorAll(".delete-icon");
@@ -111,6 +119,13 @@ export class DOMManager {
       editButtons = document.querySelectorAll(".edit-icon");
       editButtons.forEach((editButton, index) => {
         editButton.addEventListener("click", () => {
+          this.activeToDo = this.activeProject.todos[index];
+          editToDoName.value = this.activeToDo.name;
+          editToDoDueDate.value = this.activeToDo.dueDate;
+          editToDoPriority.value = this.activeToDo.priority;
+          editToDoDescription.value = this.activeToDo.description;
+          editToDoNotes.value = this.activeToDo.notes;
+          console.log(editToDoForm);
           this.display.toggleProjectForm(editToDoForm);
         });
       });
@@ -190,8 +205,19 @@ export class DOMManager {
       this.display.toggleProjectForm(toDoForm);
     });
 
-    /*addToDoBtn?.addEventListener("click", () => {
-  display.toggleProjectForm(toDoForm);
-});*/
+    editToDoForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      this.PM.renameToDo(this.activeToDo, editToDoName.value);
+      this.PM.changeToDoDueDate(this.activeToDo, editToDoDueDate.value);
+      this.PM.changeToDoDescription(this.activeToDo, editToDoDescription.value);
+      this.PM.changeToDoPriority(this.activeToDo, editToDoPriority.value);
+      this.PM.changeToDoNotes(this.activeToDo, editToDoNotes.value);
+      clickEmulator();
+      editToDoForm.reset();
+    });
+
+    editToDoForm?.addEventListener("reset", (event) => {
+      this.display.toggleProjectForm(editToDoForm);
+    });
   }
 }
