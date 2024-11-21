@@ -17,6 +17,7 @@ export class DisplayManager {
     this.drawAddProjectButton(projects);
     this.forms.newProject();
     this.forms.newToDo();
+    this.forms.editToDoForm();
     //this.forms.newProject();
   }
   drawAddProjectButton(target) {
@@ -128,9 +129,6 @@ export class DisplayManager {
       container.appendChild(card);
     });
     this.drawAddTodoButton(container);
-  }
-  drawEditForm(todo) {
-    this.forms.editToDo(todo);
   }
 
   highlightActive(project) {

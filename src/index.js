@@ -28,6 +28,8 @@ const toDoPriority = document.querySelector("#todo-priority");
 const toDoDescription = document.querySelector("#todo-description");
 const toDoNotes = document.querySelector("#todo-notes");
 
+const editToDoForm = document.querySelector(".form-edit-todo");
+
 let editButtons = document.querySelectorAll(".edit-icon");
 let deleteButtons = document.querySelectorAll(".delete-icon");
 
@@ -59,13 +61,9 @@ const addTodo = () => {
 const editToDo = () => {
   editButtons = document.querySelectorAll(".edit-icon");
   editButtons.forEach((editButton, index) => {
-    /*editButton.addEventListener("click", () => {
-      display.drawEditForm(activeProject.todos[index]);
+    editButton.addEventListener("click", () => {
+      display.toggleProjectForm(editToDoForm);
     });
-    const editForm = document.querySelector(".form-edit-todo");
-    editForm?.addEventListener("blur", () => {
-      editForm.remove();
-    });*/
   });
 };
 
