@@ -131,12 +131,13 @@ export class DisplayManager {
     this.drawAddTodoButton(container);
   }
 
-  drawProjectsOptionList(target) {
+  drawProjectsOptionList(target, activeProjectIndex) {
     target.innerHTML = "";
     const projects = this.PM.getProjects();
     projects.forEach((project, index) => {
       const option = document.createElement("option");
       option.value = index;
+      if (index === activeProjectIndex) option.selected = "selected";
       option.textContent = project.name;
       target.appendChild(option);
     });

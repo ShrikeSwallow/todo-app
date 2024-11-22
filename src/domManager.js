@@ -123,7 +123,10 @@ export class DOMManager {
         editButton.addEventListener("click", () => {
           this.activeToDo = this.activeProject.todos[index];
           editToDoName.value = this.activeToDo.name;
-          this.display.drawProjectsOptionList(editToDoProject);
+          this.display.drawProjectsOptionList(
+            editToDoProject,
+            this.PM.projects.indexOf(this.activeProject)
+          );
           if (this.activeToDo.isComplete) {
             editToDoComplete.checked = "true";
           } else {
