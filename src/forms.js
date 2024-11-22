@@ -66,13 +66,10 @@ export class Forms {
     dueDate.appendChild(dueDateInput);
     fieldset.appendChild(dueDate);
     dueDateInput.addEventListener("mouseover", (event) => {
-      console.log("Mouse over date");
       this.convertTextToDate(event.currentTarget);
     });
     dueDateInput.addEventListener("blur", (event) => {
-      console.log("Mouse outside date");
       this.convertDateToText(event.currentTarget);
-      console.log(dueDateInput.value);
     });
     //end of project due date section
 
@@ -330,13 +327,10 @@ export class Forms {
     dueDate.appendChild(dueDateInput);
     fieldset.appendChild(dueDate);
     dueDateInput.addEventListener("mouseover", (event) => {
-      console.log("Mouse over date");
       this.convertTextToDate(event.currentTarget);
     });
     dueDateInput.addEventListener("blur", (event) => {
-      console.log("Mouse outside date");
       this.convertDateToText(event.currentTarget);
-      console.log(dueDateInput.value);
     });
     //end of todo due date section
 
