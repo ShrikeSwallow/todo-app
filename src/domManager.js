@@ -220,6 +220,18 @@ export class DOMManager {
       event.preventDefault();
       this.PM.renameToDo(this.activeToDo, editToDoName.value);
       //console.log(this.activeToDo.isComplete);
+      if (
+        !(
+          Number.parseInt(editToDoProject.value) ===
+          this.PM.projects.indexOf(this.activeProject)
+        )
+      ) {
+        this.PM.moveToDo(
+          this.activeToDo,
+          this.activeProject,
+          this.PM.projects[Number.parseInt(editToDoProject.value)]
+        );
+      }
       if (editToDoComplete.checked) {
         this.PM.complete(this.activeToDo);
       } else {
