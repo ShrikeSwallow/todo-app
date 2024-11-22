@@ -78,6 +78,7 @@ export class DOMManager {
 
     const editToDoForm = document.querySelector(".form-edit-todo");
     const editToDoName = document.querySelector("#edit-todo-name");
+    const editToDoProject = document.querySelector("#edit-todo-project");
     const editToDoComplete = document.querySelector("#edit-todo-complete");
     const editToDoDueDate = document.querySelector("#edit-todo-due-date");
     const editToDoPriority = document.querySelector("#edit-todo-priority");
@@ -122,6 +123,7 @@ export class DOMManager {
         editButton.addEventListener("click", () => {
           this.activeToDo = this.activeProject.todos[index];
           editToDoName.value = this.activeToDo.name;
+          this.display.drawProjectsOptionList(editToDoProject);
           if (this.activeToDo.isComplete) {
             editToDoComplete.checked = "true";
           } else {

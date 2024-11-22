@@ -131,6 +131,17 @@ export class DisplayManager {
     this.drawAddTodoButton(container);
   }
 
+  drawProjectsOptionList(target) {
+    target.innerHTML = "";
+    const projects = this.PM.getProjects();
+    projects.forEach((project, index) => {
+      const option = document.createElement("option");
+      option.value = index;
+      option.textContent = project.name;
+      target.appendChild(option);
+    });
+  }
+
   highlightActive(project) {
     project.classList.add("active");
   }
