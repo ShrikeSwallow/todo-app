@@ -6,7 +6,7 @@ export class ProjectManager {
       return ProjectManager.instance;
     }
     ProjectManager.instance = this;
-    this.projects = [new Project("Default", "2000-12-12")];
+    this.projects = [new Project("Default", "N/A")];
     this.default = this.projects[0];
   }
   addProject(project) {
