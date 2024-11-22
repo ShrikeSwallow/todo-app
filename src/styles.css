@@ -124,15 +124,15 @@ main {
 }
 
 .priority-low {
-  color: #0ea5e9;
+  color: #e879f9;
 }
 
 .priority-medium {
-  color: #15803d;
+  color: #a21caf;
 }
 
 .priority-high {
-  color: #dc2626;
+  color: #4a044e;
 }
 
 .todo-card .due-date,
