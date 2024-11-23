@@ -12,11 +12,58 @@ export class DOMManager {
     DOMManager.instance = this;
     this.display = new DisplayManager();
     this.PM = new ProjectManager();
+    console.log(this.PM.projects);
     this.activeProject = this.PM.default;
+  }
+
+  storageAvailable(type) {
+    let storage;
+    try {
+      storage = window[type];
+      const x = "__storage_test__";
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+    } catch (e) {
+      return (
+        e instanceof DOMException &&
+        e.name === "QuotaExceededError" &&
+        // acknowledge QuotaExceededError only if there's something already stored
+        storage &&
+        storage.length !== 0
+      );
+    }
+  }
+
+  loadStoredProjects() {
+    const storedProjects = JSON.parse(localStorage.getItem("projects"));
+    console.log(storedProjects);
+    storedProjects.forEach((project, index) => {
+      Object.setPrototypeOf(project, Project.prototype);
+      project.todos.forEach((todo) => {
+        Object.setPrototypeOf(todo, ToDo.prototype);
+      });
+      this.PM.projects[index] = project;
+    });
+    this.activeProject = this.PM.projects[0];
+    console.log(storedProjects);
+  }
+  updateStoredProjects() {
+    localStorage.setItem("projects", JSON.stringify(this.PM.projects));
+  }
+
+  loadStoredData() {
+    //console.log(this.storageAvailable("localStorage"));
+    if (this.storageAvailable("localStorage")) {
+      if (localStorage.getItem("projects")) {
+        this.loadStoredProjects();
+        console.log(this.PM.projects);
+      }
+    }
   }
   initialize() {
     /* test section 
-    with fixed data*/
+    with fixed data
     const testTodo = new ToDo(
       "test1",
       "2024-1-1",
@@ -57,8 +104,9 @@ export class DOMManager {
     this.PM.addToDo(testTodo3);
     this.PM.addToDo(testTodo4);
     this.PM.addToDo(testTodo5);
-    this.PM.complete(testTodo);
+    this.PM.complete(testTodo);*/
     //end of test data section
+    this.loadStoredData();
     this.display.drawAll();
   }
   startListeners() {
@@ -155,6 +203,7 @@ export class DOMManager {
             this.activeProject.todos[index],
             this.activeProject
           );
+          this.updateStoredProjects();
           clickEmulator();
         });
       });
@@ -200,6 +249,7 @@ export class DOMManager {
       projectForm.reset();
       console.log((allProjects = document.querySelectorAll(".project")));
       allProjects = document.querySelectorAll(".project");
+      this.updateStoredProjects();
       highlighter();
       clickEmulator();
     });
@@ -223,6 +273,7 @@ export class DOMManager {
         ),
         this.activeProject
       );
+      this.updateStoredProjects();
       clickEmulator();
       toDoForm.reset();
     });
@@ -262,6 +313,7 @@ export class DOMManager {
       this.PM.changeToDoDescription(this.activeToDo, editToDoDescription.value);
       this.PM.changeToDoPriority(this.activeToDo, editToDoPriority.value);
       this.PM.changeToDoNotes(this.activeToDo, editToDoNotes.value);
+      this.updateStoredProjects();
       clickEmulator();
       editToDoForm.reset();
     });

@@ -30,6 +30,7 @@ export class StorageManager {
 
   loadStoredProjects() {
     const storedProjects = JSON.parse(localStorage.getItem("projects"));
+    this.PM.projects = storedProjects;
   }
   updateStoredProjects() {
     localStorage.setItem("projects", JSON.stringify(this.PM.projects));

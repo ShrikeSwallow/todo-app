@@ -10,6 +10,5 @@ console.log("Loading succesful");
 const dom = new DOMManager();
 const display = new DisplayManager();
 const PM = new ProjectManager();
-let activeProject = dom.activeProject;
 dom.initialize();
 dom.startListeners();
