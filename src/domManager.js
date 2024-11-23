@@ -1,6 +1,7 @@
 import { Project, ToDo } from "./classes";
 import { ProjectManager } from "./objectManagers";
 import { DisplayManager } from "./displayManager";
+import { format, parse } from "date-fns";
 
 export class DOMManager {
   activeToDo;
@@ -132,7 +133,10 @@ export class DOMManager {
           } else {
             editToDoComplete.removeAttribute("checked");
           }
-          editToDoDueDate.value = this.activeToDo.dueDate;
+          editToDoDueDate.value = format(
+            parse(this.activeToDo.dueDate, "yyyy-MM-dd", new Date()),
+            "yyyy-MM-dd"
+          );
           editToDoPriority.value = this.activeToDo.priority;
           editToDoDescription.value = this.activeToDo.description;
           editToDoNotes.value = this.activeToDo.notes;
@@ -183,7 +187,15 @@ export class DOMManager {
 
     projectForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      this.PM.addProject(new Project(projectName.value, projectDueDate.value));
+      this.PM.addProject(
+        new Project(
+          projectName.value,
+          format(
+            parse(projectDueDate.value, "yyyy-MM-dd", new Date()),
+            "dd MMM yyyy"
+          )
+        )
+      );
       this.display.drawSidebarProjects(this.PM.getProjects(), liveProjects);
       projectForm.reset();
       console.log((allProjects = document.querySelectorAll(".project")));
@@ -201,7 +213,10 @@ export class DOMManager {
       this.PM.addToDo(
         new ToDo(
           toDoName.value,
-          toDoDueDate.value,
+          format(
+            parse(toDoDueDate.value, "yyyy-MM-dd", new Date()),
+            "dd MMM yyyy"
+          ),
           toDoDescription.value,
           toDoPriority.value,
           toDoNotes.value
@@ -237,7 +252,13 @@ export class DOMManager {
       } else {
         this.PM.uncomplete(this.activeToDo);
       }
-      this.PM.changeToDoDueDate(this.activeToDo, editToDoDueDate.value);
+      this.PM.changeToDoDueDate(
+        this.activeToDo,
+        format(
+          parse(editToDoDueDate.value, "yyyy-MM-dd", new Date()),
+          "dd MMM yyyy"
+        )
+      );
       this.PM.changeToDoDescription(this.activeToDo, editToDoDescription.value);
       this.PM.changeToDoPriority(this.activeToDo, editToDoPriority.value);
       this.PM.changeToDoNotes(this.activeToDo, editToDoNotes.value);

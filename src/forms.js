@@ -8,25 +8,6 @@ export class Forms {
     Forms.instance = this;
     //this.forms = document.querySelector(".forms-container");
   }
-  convertTextToDate(input) {
-    if (input.value === "") {
-      input.value = format(new Date(), "yyyy-MM-dd");
-    } else
-      input.value = format(
-        parse(input.value, "dd MMM yy", new Date()),
-        "yyyy-MM-dd"
-      );
-    input.type = "date";
-  }
-  convertDateToText(input) {
-    input.type = "type";
-    input.value = format(
-      parse(input.value, "yyyy-MM-dd", new Date()),
-      "dd MMM yy"
-    );
-    const placeholder = input.value ?? "Deadline...";
-    input.placeholder = placeholder;
-  }
   newProject() {
     const projects = document.querySelector(".live-projects");
     const form = document.createElement("form");
@@ -62,14 +43,11 @@ export class Forms {
     dueDate.classList.add("form-field");
 
     const dueDateInput = document.createElement("input");
-    /*basic data input implementation
+
     dueDateInput.type = "date";
-    */
-    dueDateInput.type = "text";
     dueDateInput.id = "project-due-date";
     dueDateInput.name = "project-due-date";
-    dueDateInput.value = `${format(new Date(), "dd MMM yy")}`;
-    dueDateInput.placeholder = "Deadline...";
+    dueDateInput.value = `${format(new Date(), "yyyy-MM-dd")}`;
     dueDateInput.required = true;
 
     const dueDateLabel = document.createElement("label");
@@ -79,14 +57,6 @@ export class Forms {
     dueDate.appendChild(dueDateLabel);
     dueDate.appendChild(dueDateInput);
     fieldset.appendChild(dueDate);
-    dueDateInput.addEventListener("mouseover", (event) => {
-      if (event.target.type === "text")
-        this.convertTextToDate(event.currentTarget);
-    });
-    dueDateInput.addEventListener("blur", (event) => {
-      if (event.target.type === "date")
-        this.convertDateToText(event.currentTarget);
-    });
     //end of project due date section
 
     //create buttons
@@ -143,10 +113,10 @@ export class Forms {
     dueDate.classList.add("form-field", "date-field");
 
     const dueDateInput = document.createElement("input");
-    dueDateInput.type = "text";
+    dueDateInput.type = "date";
     dueDateInput.id = "todo-due-date";
     dueDateInput.name = "todo-due-date";
-    dueDateInput.placeholder = "DD/MM/YYYY";
+    dueDateInput.value = `${format(new Date(), "yyyy-MM-dd")}`;
     dueDateInput.required = true;
 
     const dueDateLabel = document.createElement("label");
@@ -156,15 +126,6 @@ export class Forms {
     dueDate.appendChild(dueDateLabel);
     dueDate.appendChild(dueDateInput);
     fieldset.appendChild(dueDate);
-    dueDateInput.addEventListener("mouseover", (event) => {
-      console.log("Mouse over date");
-      this.convertTextToDate(event.currentTarget);
-    });
-    dueDateInput.addEventListener("blur", (event) => {
-      console.log("Mouse outside date");
-      this.convertDateToText(event.currentTarget);
-      console.log(dueDateInput.value);
-    });
     //end of todo due date section
 
     //create priority div and its elements
@@ -329,10 +290,10 @@ export class Forms {
     dueDate.classList.add("form-field", "date-field");
 
     const dueDateInput = document.createElement("input");
-    dueDateInput.type = "text";
+    dueDateInput.type = "date";
     dueDateInput.id = "edit-todo-due-date";
     dueDateInput.name = "edit-todo-due-date";
-    dueDateInput.placeholder = "DD/MM/YYYY";
+    dueDateInput.value = `${format(new Date(), "yyyy-MM-dd")}`;
     dueDateInput.required = true;
 
     const dueDateLabel = document.createElement("label");
@@ -342,12 +303,6 @@ export class Forms {
     dueDate.appendChild(dueDateLabel);
     dueDate.appendChild(dueDateInput);
     fieldset.appendChild(dueDate);
-    dueDateInput.addEventListener("mouseover", (event) => {
-      this.convertTextToDate(event.currentTarget);
-    });
-    dueDateInput.addEventListener("blur", (event) => {
-      this.convertDateToText(event.currentTarget);
-    });
     //end of todo due date section
 
     //create priority div and its elements
