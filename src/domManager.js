@@ -181,10 +181,10 @@ export class DOMManager {
           } else {
             editToDoComplete.removeAttribute("checked");
           }
-          editToDoDueDate.value = format(
+          /*editToDoDueDate.value = format(
             parse(this.activeToDo.dueDate, "yyyy-MM-dd", new Date()),
             "yyyy-MM-dd"
-          );
+          );*/
           editToDoPriority.value = this.activeToDo.priority;
           editToDoDescription.value = this.activeToDo.description;
           editToDoNotes.value = this.activeToDo.notes;
